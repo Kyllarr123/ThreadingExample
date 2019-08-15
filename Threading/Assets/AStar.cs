@@ -214,33 +214,36 @@ namespace Russell
 
         private void OnDrawGizmos()
         {
-            
-            var scale = new Vector3(4, 4, 4);
-            Gizmos.color = Color.blue;
-            if (startNode != null) Gizmos.DrawCube(startNode.position, scale);
-            Gizmos.color = Color.yellow;
-            if (target != null) Gizmos.DrawCube(target.position, scale);
-            Gizmos.color = Color.green;
-            if (currentNode != null) Gizmos.DrawCube(currentNode.position, scale);
+            if (finished)
+            {
+                var scale = new Vector3(4, 4, 4);
+                Gizmos.color = Color.blue;
+                if (startNode != null) Gizmos.DrawCube(startNode.position, scale);
+                Gizmos.color = Color.yellow;
+                if (target != null) Gizmos.DrawCube(target.position, scale);
+                Gizmos.color = Color.green;
+                if (currentNode != null) Gizmos.DrawCube(currentNode.position, scale);
 
-            Gizmos.color = Color.red;
-            if (openNodes != null)
-                foreach (Node node in openNodes)
-                    Gizmos.DrawCube(node.position, scale);
-            Gizmos.color = Color.black;
-            if (closedNodes != null)
-                foreach (Node node in closedNodes)
-                    Gizmos.DrawCube(node.position, scale);
-            Gizmos.color = Color.green;
-            if (closedNodes != null)
-                foreach (Node node in finalPath)
-                    Gizmos.DrawCube(node.position, scale);
-            
+                Gizmos.color = Color.red;
+                if (openNodes != null)
+                    foreach (Node node in openNodes)
+                        Gizmos.DrawCube(node.position, scale);
+                Gizmos.color = Color.black;
+                if (closedNodes != null)
+                    foreach (Node node in closedNodes)
+                        Gizmos.DrawCube(node.position, scale);
+                Gizmos.color = Color.green;
+                if (closedNodes != null)
+                    foreach (Node node in finalPath)
+                        Gizmos.DrawCube(node.position, scale);
+
+            }
+
         }
 
         IEnumerator WaitASec()
         {
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(5);
             Rerun();
         }
     }
